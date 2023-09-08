@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Text, View} from "react-native";
 
 import {Input} from "../../components/input";
-import {Button} from "../../components/Button";
+import {Button} from "../../components/button";
 import styles from "./styles";
 
 import permissionService from "../../services/permissionService";

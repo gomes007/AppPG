@@ -13,6 +13,7 @@ import {AuthProvider, useAuth} from "./src/services/AuthContext";
 import Home from "./src/screens/home";
 import SignIn from "./src/screens/SignIn/index";
 import Permission from "./src/screens/Permisison/index";
+import Product from "./src/screens/Product";
 
 
 const Drawer = createDrawerNavigator();
@@ -39,9 +40,8 @@ const DrawerContent = (props) => {
         }
     };
 
-
     return (
-        <View style={{flex: 1}}>
+        <View style={{flex: 1, zIndex: 2}}>
             <DrawerContentScrollView {...props}>
                 <View style={styles.drawerItemContainer}>
                     <DrawerItem
@@ -50,10 +50,20 @@ const DrawerContent = (props) => {
                         onPress={() => navigateToScreen('Permission')}
                     />
                 </View>
+                <View style={styles.drawerItemContainer}>
+                    <DrawerItem
+                        icon={() => <Icon name="product-hunt" size={24} color="gray"/>}
+                        label="Product"
+                        onPress={() => navigateToScreen('Product')}
+                    />
+                </View>
             </DrawerContentScrollView>
-            <View style={{alignItems: 'center', paddingBottom: 80}}>
+            <View style={{paddingBottom: 80}}>
                 <TouchableOpacity onPress={handleLogout}>
-                    <Text>Logout</Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Icon style={{ marginLeft: 15 }} name="sign-out" size={24} color="gray" />
+                        <Text style={{ marginLeft: 8 }}>Logout</Text>
+                    </View>
                 </TouchableOpacity>
             </View>
         </View>
@@ -103,6 +113,7 @@ const AuthenticatedNavigation = () => {
     return (
         <Drawer.Navigator name="Home" initialRouteName="Home" drawerContent={(props) => <DrawerContent {...props} />}>
             <Drawer.Screen name="Permission" component={Permission}/>
+            <Drawer.Screen name="Product" component={Product}/>
             <Drawer.Screen name="Home" component={Home}/>
         </Drawer.Navigator>
     );
@@ -152,21 +163,27 @@ const styles = StyleSheet.create({
         borderTopWidth: 0.5,
         borderTopColor: '#cdc7c7',
         height: 60,
+        zIndex: 1,
     },
     tab: {
         flex: 1,
         alignItems: 'center',
         padding: 10,
 
+
     },
     tabText: {
-        color: 'gray'
+        color: 'gray',
+
     },
     drawerItemContainer: {
         borderBottomWidth: 0.5,
         borderBottomColor: '#cdc7c7',
-        marginLeft: 10,
+        marginLeft: 8,
         marginRight: 15,
+    },
+    drawerContent: {
+        zIndex: 2,
     },
 });
 
