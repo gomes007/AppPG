@@ -2,8 +2,7 @@ import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#F5F5F5',
 
     },
     headerTitle: {
@@ -25,8 +24,15 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginRight: 12,
     },
+    row2: {
+        flexDirection: 'row',
+        marginRight: 12,
+    },
     half: {
         width: '33%',
+    },
+    half2: {
+        width: '35%',
     },
     textArea: {
         height: 100,
@@ -34,6 +40,19 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         paddingLeft: 10,
         paddingRight: 10,
+    },
+    previewContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        margin: 10,
+    },
+    previewImage: {
+        width: 100,
+        height: 100,
+    },
+    removeText: {
+        color: 'red',
+        marginLeft: 10,
     },
 });
 

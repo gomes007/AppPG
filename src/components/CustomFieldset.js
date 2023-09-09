@@ -22,14 +22,16 @@ const styles = StyleSheet.create({
         position: 'relative',
         width: '95%',
         alignSelf: 'center',
+        backgroundColor: 'white',
     },
     label: {
         position: 'absolute',
         top: -13,
         left: 10,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#F5F5F5',
         paddingHorizontal: 4,
         fontSize: 16,
-        color: '#333'
+        color: '#333',
+
     },
 });

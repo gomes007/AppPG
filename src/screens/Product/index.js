@@ -4,6 +4,7 @@ import tabGeneralData from "./tabGeneralData";
 import {ProductProvider} from "./ProductContext";
 import tabPrice from "./tabPrice";
 import tabInventory from "./tabInventory";
+import tabPictures from "./tabPictures";
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -15,6 +16,7 @@ const Product = () => {
                 <Tab.Screen name="General Data" component={tabGeneralData} />
                 <Tab.Screen name="Price" component={tabPrice} />
                 <Tab.Screen name="Inventory" component={tabInventory} />
+                <Tab.Screen name="Pictures" component={tabPictures} />
             </Tab.Navigator>
         </ProductProvider>
     );

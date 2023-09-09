@@ -34,6 +34,35 @@ export const ProductProvider = ({ children }) => {
         currentQuantity: 0,
     });
 
+    const [uploadedFiles, setUploadedFiles] = useState([]);
+    const [previews, setPreviews] = useState([]);
+
+
+    const isValidFileExtension = (filename) => {
+        const validExtensions = ['jpg', 'jpeg', 'gif', 'png'];
+        const fileExtension = filename.split('.').pop().toLowerCase();
+        return validExtensions.includes(fileExtension);
+    };
+
+    const handleFileChange = (pickerResult) => {
+        if (!pickerResult.uri) {
+            console.error("Objeto de resposta inválido recebido em handleFileChange.");
+            return;
+        }
+
+        setUploadedFiles([...uploadedFiles, pickerResult.uri]);
+        setPreviews([...previews, pickerResult.uri]);
+    };
+
+
+    const removeFile = (index) => {
+        setUploadedFiles(files => files.filter((file, i) => i !== index));
+        setPreviews(files => files.filter((file, i) => i !== index));
+    }
+
+
+
+
     const handleProduct = (name, value) => {
         setProduct({
             ...product,
@@ -87,7 +116,11 @@ export const ProductProvider = ({ children }) => {
                 price,
                 handlePrice,
                 inventory,
-                handleInventory
+                handleInventory,
+                uploadedFiles,
+                previews,
+                handleFileChange,
+                removeFile
             }}
         >
             {children}

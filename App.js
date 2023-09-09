@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
         borderTopColor: '#cdc7c7',
         height: 60,
         zIndex: 1,
+        backgroundColor: 'white',
     },
     tab: {
         flex: 1,
