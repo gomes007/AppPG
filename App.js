@@ -41,7 +41,7 @@ const DrawerContent = (props) => {
     };
 
     return (
-        <View style={{flex: 1, zIndex: 2}}>
+        <View style={{flex: 1, zIndex: 100}}>
             <DrawerContentScrollView {...props}>
                 <View style={styles.drawerItemContainer}>
                     <DrawerItem
@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         padding: 10,
+        zIndex: 1,
 
 
     },
@@ -183,7 +184,7 @@ const styles = StyleSheet.create({
         marginRight: 15,
     },
     drawerContent: {
-        zIndex: 2,
+        zIndex: 100,
     },
 });
 
