@@ -25,8 +25,9 @@ const styles = StyleSheet.create({
         marginRight: 12,
     },
     row2: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         marginRight: 12,
+        marginLeft: 13,
     },
     half: {
         width: '33%',

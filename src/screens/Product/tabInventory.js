@@ -1,13 +1,15 @@
 import {ScrollView, View} from "react-native";
 import {useProduct} from "./useProduct";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./styles";
 import {Input} from "../../components/input";
+import CheckBox from "react-native-checkbox";
 
 
 const TabInventory = () => {
 
     const {inventory, handleInventory} = useProduct();
+    const {details, handleDetails} = useProduct();
 
     const [inventories, setInventories] = useState({
         minQuantity: inventory.minQuantity || "",
@@ -47,6 +49,42 @@ const TabInventory = () => {
                         value={String(inventories.currentQuantity)}
                         onChangeText={(text) => setInventories(prev => ({...prev, currentQuantity: text}))}
                     />
+                    <View style={styles.row2}>
+                        <View>
+                            <CheckBox
+                                label="Enabled"
+                                name='enabled'
+                                checked={details.enabled}
+                                onChange={() => handleDetails({target: {name: 'enabled', value: !details.enabled}})}
+                            />
+                        </View>
+                        <View >
+                            <CheckBox
+                                label="Sold Separately"
+                                name='soldSeparately'
+                                checked={details.soldSeparately}
+                                onChange={() => handleDetails({
+                                    target: {
+                                        name: 'soldSeparately',
+                                        value: !details.soldSeparately
+                                    }
+                                })}
+                            />
+                        </View>
+                        <View>
+                            <CheckBox
+                                label="Enabled PDV"
+                                name='enabledOnPDV'
+                                checked={details.enabledOnPDV}
+                                onChange={() => handleDetails({
+                                    target: {
+                                        name: 'enabledOnPDV',
+                                        value: !details.enabledOnPDV
+                                    }
+                                })}
+                            />
+                        </View>
+                    </View>
                 </View>
             </ScrollView>
         </View>

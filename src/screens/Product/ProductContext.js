@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, {createContext, useState} from 'react';
 import ProductService from "../../services/productService";
 
 export const ProductContext = createContext();
@@ -34,9 +34,9 @@ export const ProductProvider = ({ children }) => {
         currentQuantity: 0,
     });
 
+    //images
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const [previews, setPreviews] = useState([]);
-
 
     const isValidFileExtension = (filename) => {
         const validExtensions = ['jpg', 'jpeg', 'gif', 'png'];
@@ -59,8 +59,7 @@ export const ProductProvider = ({ children }) => {
         setUploadedFiles(files => files.filter((file, i) => i !== index));
         setPreviews(files => files.filter((file, i) => i !== index));
     }
-
-
+    //end images
 
 
     const handleProduct = (name, value) => {
@@ -120,7 +119,7 @@ export const ProductProvider = ({ children }) => {
                 uploadedFiles,
                 previews,
                 handleFileChange,
-                removeFile
+                removeFile,
             }}
         >
             {children}

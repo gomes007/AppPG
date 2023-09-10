@@ -1,4 +1,4 @@
-import axiosInstance from './axiosConfig';
+import axiosInstance from "./axiosConfig";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AuthService = {

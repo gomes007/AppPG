@@ -4,7 +4,6 @@ import {useProduct} from './useProduct';
 import {Input} from "../../components/input";
 import styles from './styles'
 import FieldForm from "../../components/form";
-import CheckBox from 'react-native-checkbox';
 
 
 const TabGeneralData = () => {
@@ -81,42 +80,6 @@ const TabGeneralData = () => {
                             value={product.description}
                             onChange={(value) => handleProduct('description', value)}
                         />
-                    </View>
-                    <View style={styles.row2}>
-                        <View style={styles.half2}>
-                            <CheckBox
-                                label="Enabled"
-                                name='enabled'
-                                checked={details.enabled}
-                                onChange={() => handleDetails({target: {name: 'enabled', value: !details.enabled}})}
-                            />
-                        </View>
-                        <View style={styles.half2}>
-                            <CheckBox
-                                label="Sold Separately"
-                                name='soldSeparately'
-                                checked={details.soldSeparately}
-                                onChange={() => handleDetails({
-                                    target: {
-                                        name: 'soldSeparately',
-                                        value: !details.soldSeparately
-                                    }
-                                })}
-                            />
-                        </View>
-                        <View style={styles.half2}>
-                            <CheckBox
-                                label="Enabled PDV"
-                                name='enabledOnPDV'
-                                checked={details.enabledOnPDV}
-                                onChange={() => handleDetails({
-                                    target: {
-                                        name: 'enabledOnPDV',
-                                        value: !details.enabledOnPDV
-                                    }
-                                })}
-                            />
-                        </View>
                     </View>
                 </View>
             </View>
