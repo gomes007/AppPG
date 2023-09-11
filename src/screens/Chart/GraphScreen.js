@@ -55,13 +55,14 @@ const GraphScreen = () => {
                     width={Dimensions.get('window').width}
                     height={220}
                     chartConfig={{
-                        backgroundColor: '#ffffff',
-                        backgroundGradientFrom: '#ffffff',
-                        backgroundGradientTo: '#ffffff',
-                        decimalPlaces: 2,
-                        color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                        backgroundColor: "#171212",
+                        backgroundGradientFrom: "#171212",
+                        backgroundGradientTo: "#171212",
+                        decimalPlaces: 2, // optional, defaults to 2dp
+                        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                        labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                         style: {
-                            borderRadius: 16,
+                            borderRadius: 16
                         },
                     }}
                     bezier
@@ -76,12 +77,12 @@ const GraphScreen = () => {
 
             <View style={{
                 padding: 20,
-                backgroundColor: '#171212',
+                backgroundColor: '#9c9d9d',
                 margin: 10,
                 borderRadius: 10,
                 width: 200
             }}>
-                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'white' }}>Total Sales: {totalSales}</Text>
+                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Total Sales: {totalSales}</Text>
             </View>
 
         </View>

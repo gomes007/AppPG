@@ -120,6 +120,14 @@ const BottomTabs = () => {
                 <Icon name="home" size={24} color="gray"/>
                 <Text style={styles.tabText}>Home</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.tab} onPress={() => navigation.navigate('Home')}>
+                <Icon name="phone" size={24} color="gray"/>
+                <Text style={styles.tabText}>Contact</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.tab} onPress={() => navigation.navigate('Home')}>
+                <Icon name="info" size={24} color="gray"/>
+                <Text style={styles.tabText}>About us</Text>
+            </TouchableOpacity>
         </View>
     );
 }
