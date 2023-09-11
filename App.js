@@ -15,6 +15,7 @@ import SignIn from "./src/screens/SignIn/index";
 import Permission from "./src/screens/Permisison/index";
 import Product from "./src/screens/Product";
 import ProvidersList from "./src/screens/Provider/providerList";
+import GraphScreen from "./src/screens/Chart/GraphScreen";
 
 
 const Drawer = createDrawerNavigator();
@@ -63,6 +64,13 @@ const DrawerContent = (props) => {
                         icon={() => <Icon name="list" size={24} color="gray"/>}
                         label="Providers List"
                         onPress={() => navigateToScreen('ProvidersList')}
+                    />
+                </View>
+                <View style={styles.drawerItemContainer}>
+                    <DrawerItem
+                        icon={() => <Icon name="line-chart" size={24} color="gray"/>}
+                        label="GraphScreen"
+                        onPress={() => navigateToScreen('GraphScreen')}
                     />
                 </View>
             </DrawerContentScrollView>
@@ -123,6 +131,7 @@ const AuthenticatedNavigation = () => {
             <Drawer.Screen name="Permission" component={Permission}/>
             <Drawer.Screen name="Product" component={Product}/>
             <Drawer.Screen name="ProvidersList" component={ProvidersList}/>
+            <Drawer.Screen name="GraphScreen" component={GraphScreen}/>
             <Drawer.Screen name="Home" component={Home}/>
         </Drawer.Navigator>
     );

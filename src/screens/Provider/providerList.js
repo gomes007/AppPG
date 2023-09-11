@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
-import {View, Text, Button, FlatList, TextInput, Alert, TouchableOpacity, ScrollView} from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Alert, ScrollView, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Picker} from '@react-native-picker/picker';
 
 import providerService from "../../services/providerService";
 import {Row, Rows, Table} from "react-native-table-component";
@@ -154,7 +154,7 @@ export default function ProvidersList({ navigation }) {
             </View>
 
 
-            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <TouchableOpacity onPress={() => setCurrentPage(currentPage - 1)}>
                     <Icon name="arrow-left" size={30} color="lightblue" />
                 </TouchableOpacity>
