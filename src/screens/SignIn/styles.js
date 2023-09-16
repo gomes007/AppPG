@@ -3,7 +3,7 @@ import {StyleSheet} from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFFFFF'
+        backgroundColor: '#F5F5F5'
     },
     header: {
         height: 40,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     thirdButtonText: {
         fontSize: 16,
         fontWeight: "600",
-        color: '#5BD075'
+        color: '#d40c4f'
     },
 
 

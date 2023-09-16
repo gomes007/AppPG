@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Dimensions, Text, View} from 'react-native';
-import {LineChart} from 'react-native-chart-kit';
+//import {BarChart, PieChart} from 'react-native-chart-kit';
+import {BarChart} from 'react-native-gifted-charts';
 import socket from "./socket";
 
 const GraphScreen = () => {
@@ -35,9 +36,9 @@ const GraphScreen = () => {
     }, []);
 
 
-
+/*
     const chartData = {
-        labels: data ? data.map((item) => item?.nome_produto) : [],
+        labels: data ? data.map((item) => item?.mes_venda) : [],
         datasets: [
             {
                 data: data ? data.map((item) => item?.total) : [],
@@ -45,46 +46,67 @@ const GraphScreen = () => {
         ],
     };
 
+ */
+
+
+    const barData = data ? data.map((item) => ({
+        value: item?.total,
+        label: item?.mes_venda,
+        frontColor: '#177AD5'
+    })) : [];
+
+
+    const screenWidth = Dimensions.get('window').width;
+
+    const calculatedBarWidth = (screenWidth - 160) / (barData.length || 1);
+
+
+
+
     return (
+        <View style={{ flex: 1, backgroundColor: '#9c9d9d', alignItems: 'center' }}>
+            {barData.length > 0 ? (
+                <View style={{
+                    marginTop: 20,
+                    backgroundColor: '#2E2E33',
+                    borderRadius: 20,
+                    elevation: 5,
+                    shadowColor: "#000",
+                    shadowOffset: { width: 0, height: 2 },
+                    shadowOpacity: 0.2,
+                    width: screenWidth - 20
+                }}>
+                    <Text style={{ textAlign: 'center', fontSize: 18, color: '#C0C0C0', marginTop: 20 }}>Vendas Mensais</Text>
 
-        <View>
-
-            {data && data.length > 0 ? (
-                <LineChart
-                    data={chartData}
-                    width={Dimensions.get('window').width}
-                    height={220}
-                    chartConfig={{
-                        backgroundColor: "#171212",
-                        backgroundGradientFrom: "#171212",
-                        backgroundGradientTo: "#171212",
-                        decimalPlaces: 2, // optional, defaults to 2dp
-                        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                        labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                        style: {
-                            borderRadius: 16
-                        },
-                    }}
-                    bezier
-                    style={{
-                        marginVertical: 8,
-                        borderRadius: 16,
-                    }}
-                />
+                    <BarChart
+                        barWidth={calculatedBarWidth}
+                        noOfSections={3}
+                        barBorderRadius={4}
+                        frontColor="#2E86AB"
+                        data={barData}
+                        yAxisThickness={0}
+                        xAxisThickness={0}
+                    />
+                    <Text style={{ textAlign: 'center', fontSize: 12, color: '#C0C0C0', marginTop: 20 }}>Mês</Text>
+                </View>
             ) : (
-                <Text>Nenhum dado disponível para exibir.</Text>
+                <Text style={{ marginTop: 20, fontSize: 18, color: 'grey' }}>Nenhum dado disponível para exibir.</Text>
             )}
 
             <View style={{
-                padding: 20,
-                backgroundColor: '#9c9d9d',
-                margin: 10,
-                borderRadius: 10,
-                width: 200
+                marginTop: 20,
+                padding: 15,
+                backgroundColor: '#2E86AB',
+                borderRadius: 50,
+                elevation: 5,
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+                width: 200,
+                alignItems: 'center'
             }}>
-                <Text style={{ fontSize: 15, fontWeight: 'bold', color: 'black' }}>Total Sales: {totalSales}</Text>
+                <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFF' }}>Total Sales: {totalSales}</Text>
             </View>
-
         </View>
     );
 };

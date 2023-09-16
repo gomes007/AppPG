@@ -3,6 +3,7 @@ import {StyleSheet} from "react-native";
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#F5F5F5',
+        color: '#000',
 
     },
     headerTitle: {
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
         marginTop: 50,
     },
     nomeInput: {
-        marginTop: 20,
+        marginTop: 25,
     },
     row: {
         flexDirection: 'row',

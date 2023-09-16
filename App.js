@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import {Keyboard, SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Keyboard, Platform, SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createDrawerNavigator, DrawerContentScrollView, DrawerItem} from "@react-navigation/drawer";
 import {createStackNavigator} from '@react-navigation/stack';
@@ -47,38 +47,42 @@ const DrawerContent = (props) => {
             <DrawerContentScrollView {...props}>
                 <View style={styles.drawerItemContainer}>
                     <DrawerItem
-                        icon={() => <Icon name="lock" size={24} color="gray"/>}
+                        icon={() => <Icon name="lock" size={24} color="black"/>}
                         label="Permission"
+                        labelStyle={styles.drawerItemLabel}
                         onPress={() => navigateToScreen('Permission')}
                     />
                 </View>
                 <View style={styles.drawerItemContainer}>
                     <DrawerItem
-                        icon={() => <Icon name="product-hunt" size={24} color="gray"/>}
+                        icon={() => <Icon name="product-hunt" size={24} color="black"/>}
                         label="Product"
+                        labelStyle={styles.drawerItemLabel}
                         onPress={() => navigateToScreen('Product')}
                     />
                 </View>
                 <View style={styles.drawerItemContainer}>
                     <DrawerItem
-                        icon={() => <Icon name="list" size={24} color="gray"/>}
+                        icon={() => <Icon name="list" size={24} color="black"/>}
                         label="Providers List"
+                        labelStyle={styles.drawerItemLabel}
                         onPress={() => navigateToScreen('ProvidersList')}
                     />
                 </View>
                 <View style={styles.drawerItemContainer}>
                     <DrawerItem
-                        icon={() => <Icon name="line-chart" size={24} color="gray"/>}
-                        label="GraphScreen"
-                        onPress={() => navigateToScreen('GraphScreen')}
+                        icon={() => <Icon name="line-chart" size={24} color="black"/>}
+                        label="Sales"
+                        labelStyle={styles.drawerItemLabel}
+                        onPress={() => navigateToScreen('Sales')}
                     />
                 </View>
             </DrawerContentScrollView>
             <View style={{paddingBottom: 80}}>
                 <TouchableOpacity onPress={handleLogout}>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <Icon style={{ marginLeft: 15 }} name="sign-out" size={24} color="gray" />
-                        <Text style={{ marginLeft: 8 }}>Logout</Text>
+                        <Icon style={{ marginLeft: 15 }} name="sign-out" size={24} color="black" />
+                        <Text style={styles.logoutText}>Logout</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -117,15 +121,15 @@ const BottomTabs = () => {
     return (
         <View style={styles.bottomTabs}>
             <TouchableOpacity style={styles.tab} onPress={() => navigation.navigate('Home')}>
-                <Icon name="home" size={24} color="gray"/>
+                <Icon name="home" size={24} color="black"/>
                 <Text style={styles.tabText}>Home</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.tab} onPress={() => navigation.navigate('Home')}>
-                <Icon name="phone" size={24} color="gray"/>
+                <Icon name="phone" size={24} color="black"/>
                 <Text style={styles.tabText}>Contact</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.tab} onPress={() => navigation.navigate('Home')}>
-                <Icon name="info" size={24} color="gray"/>
+                <Icon name="info" size={24} color="black"/>
                 <Text style={styles.tabText}>About us</Text>
             </TouchableOpacity>
         </View>
@@ -135,11 +139,21 @@ const BottomTabs = () => {
 
 const AuthenticatedNavigation = () => {
     return (
-        <Drawer.Navigator name="Home" initialRouteName="Home" drawerContent={(props) => <DrawerContent {...props} />}>
+        <Drawer.Navigator
+            name="Home"
+            initialRouteName="Home"
+            drawerContent={(props) => <DrawerContent {...props} />}
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: '#d40c4f',
+                },
+                headerTintColor: '#fff',
+            }}
+        >
             <Drawer.Screen name="Permission" component={Permission}/>
             <Drawer.Screen name="Product" component={Product}/>
             <Drawer.Screen name="ProvidersList" component={ProvidersList}/>
-            <Drawer.Screen name="GraphScreen" component={GraphScreen}/>
+            <Drawer.Screen name="Sales" component={GraphScreen}/>
             <Drawer.Screen name="Home" component={Home}/>
         </Drawer.Navigator>
     );
@@ -201,7 +215,7 @@ const styles = StyleSheet.create({
 
     },
     tabText: {
-        color: 'gray',
+        color: 'black',
 
     },
     drawerItemContainer: {
@@ -209,9 +223,24 @@ const styles = StyleSheet.create({
         borderBottomColor: '#cdc7c7',
         marginLeft: 8,
         marginRight: 15,
+
+
     },
     drawerContent: {
         zIndex: 100,
+    },
+    drawerItemLabel: {
+        color: 'black',
+        fontSize: 16,
+        fontFamily: Platform.OS === 'ios' ? 'San Francisco' : 'Roboto',
+        letterSpacing: 0.5,
+        lineHeight: 24,
+    },
+    logoutText: {
+        marginLeft: 8,
+        color: 'black',
+        fontSize: 14,
+        fontFamily: 'Arial',
     },
 });
 

@@ -26,11 +26,11 @@ const styles = StyleSheet.create({
     },
     label: {
         position: 'absolute',
-        top: -13,
+        top: -11,
         left: 10,
         backgroundColor: '#F5F5F5',
         paddingHorizontal: 4,
-        fontSize: 16,
+        fontSize: 14,
         color: '#333',
 
     },

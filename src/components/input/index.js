@@ -25,7 +25,7 @@ export function Input({ label, isPassword, onPress, showPassword, onChangeText, 
                 {
                     isPassword &&
                     <TouchableOpacity onPress={onPress}>
-                        <FeatherIcon name={showPassword ? 'eye' : 'eye-off'} size={25} color="#5BD075"/>
+                        <FeatherIcon name={showPassword ? 'eye' : 'eye-off'} size={25} color="#d40c4f"/>
                     </TouchableOpacity>
                 }
             </View>
