@@ -1,18 +1,31 @@
 import axiosInstance from "./axiosConfig";
 
 const ProductService = {
-    async saveProduct(productData, files) {
-        let formData = new FormData();
 
-        formData.append('product', new Blob([JSON.stringify(productData)], {
-            type: 'application/json'
-        }));
+    async saveProduct(productData, uploadedFiles) {
+        if (!productData || Object.keys(productData).length === 0) {
+            return Promise.reject(new Error('Dados do produto estão vazios.'));
+        }
 
-        if (files) {
-            Array.from(files).forEach(file => {
-                formData.append('files', file);
+        const formData = new FormData();
+
+        // Adicionando o objeto do produto como uma string JSON
+        formData.append('product', JSON.stringify(productData));
+
+        // Adicionando cada arquivo individualmente
+        if (uploadedFiles && uploadedFiles.length) {
+            uploadedFiles.forEach((fileUri, index) => {
+                const fileType = fileUri.substring(fileUri.lastIndexOf(".") + 1); // Pegando a extensão do arquivo
+                formData.append('files', {
+                    uri: fileUri,
+                    type: `image/${fileType}`,
+                    name: `image${index}.${fileType}`
+                });
             });
         }
+
+        console.log('Sending productData:', JSON.stringify(productData, null, 2));
+        console.log('Sending files:', uploadedFiles);
 
         return axiosInstance
             .post('products', formData, {
@@ -21,7 +34,10 @@ const ProductService = {
                 },
             })
             .then(response => response.data)
-            .catch(error => Promise.reject(error));
+            .catch(error => {
+                console.error('Erro ao salvar produto:', error);
+                return Promise.reject(error);
+            });
     },
 
     async calculateProductPrice(price) {

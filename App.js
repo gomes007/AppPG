@@ -15,7 +15,8 @@ import SignIn from "./src/screens/SignIn/index";
 import Permission from "./src/screens/Permisison/index";
 import Product from "./src/screens/Product";
 import ProvidersList from "./src/screens/Provider/providerList";
-import GraphScreen from "./src/screens/Chart/GraphScreen";
+import SearchProvider from "./src/screens/Provider/SearchProvider";
+import ProductsProviders from "./src/screens/Products/ProductsProviders";
 
 
 const Drawer = createDrawerNavigator();
@@ -72,9 +73,9 @@ const DrawerContent = (props) => {
                 <View style={styles.drawerItemContainer}>
                     <DrawerItem
                         icon={() => <Icon name="line-chart" size={24} color="black"/>}
-                        label="Sales"
+                        label="ProductsProviders"
                         labelStyle={styles.drawerItemLabel}
-                        onPress={() => navigateToScreen('Sales')}
+                        onPress={() => navigateToScreen('ProductsProviders')}
                     />
                 </View>
             </DrawerContentScrollView>
@@ -152,8 +153,9 @@ const AuthenticatedNavigation = () => {
         >
             <Drawer.Screen name="Permission" component={Permission}/>
             <Drawer.Screen name="Product" component={Product}/>
+            <Drawer.Screen name="ProductsProviders" component={ProductsProviders}/>
             <Drawer.Screen name="ProvidersList" component={ProvidersList}/>
-            <Drawer.Screen name="Sales" component={GraphScreen}/>
+            <Drawer.Screen name="SearchProvider" component={SearchProvider}/>
             <Drawer.Screen name="Home" component={Home}/>
         </Drawer.Navigator>
     );
@@ -204,7 +206,7 @@ const styles = StyleSheet.create({
         borderTopColor: '#cdc7c7',
         height: 60,
         zIndex: 1,
-        backgroundColor: 'white',
+        backgroundColor: '#e7e6e6',
     },
     tab: {
         flex: 1,

@@ -6,6 +6,7 @@ import {Picker} from '@react-native-picker/picker';
 import providerService from "../../services/providerService";
 import {Row, Rows, Table} from "react-native-table-component";
 import Icon from "react-native-vector-icons/FontAwesome";
+import {Searchbar} from "react-native-paper";
 
 
 export default function ProvidersList({ navigation }) {
@@ -113,7 +114,7 @@ export default function ProvidersList({ navigation }) {
     return (
         <View style={{ margin: 20 }}>
             <View style={{ flexDirection: 'column', justifyContent: 'space-evenly' }}>
-                <TextInput
+                <Searchbar
                     placeholder="Filter by Name"
                     value={nameFilter}
                     onChangeText={setNameFilter}

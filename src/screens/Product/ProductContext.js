@@ -1,5 +1,6 @@
 import React, {createContext, useState} from 'react';
 import ProductService from "../../services/productService";
+import {Alert} from "react-native";
 
 export const ProductContext = createContext();
 
@@ -33,6 +34,17 @@ export const ProductProvider = ({ children }) => {
         maxQuantity: 0,
         currentQuantity: 0,
     });
+
+    //provider
+    const [provider, setProvider] = useState(null);
+    const [selectedProviders, setSelectedProviders] = useState([]);
+
+
+    const handleProvider = (selectedProvider) => {
+        setProvider(selectedProvider);
+    };
+    //end provider
+
 
     //images
     const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -105,6 +117,58 @@ export const ProductProvider = ({ children }) => {
         });
     };
 
+
+    const handleSubmit = async () => {
+
+        console.log('handleSubmit called');
+
+        const data = {
+            ...product,
+            commission: parseFloat(product.commission),
+            details: { ...details },
+            price: { ...price },
+            inventory: { ...inventory },
+            providers: selectedProviders.map(provider => ({ id: provider.id }))
+        };
+
+        console.log('Data prepared:', data);
+
+        try {
+            console.log('Trying to save product...');
+            const response = await ProductService.saveProduct(data, uploadedFiles);
+            console.log('Response received:', response);
+
+            if (response) {
+                Alert.alert(
+                    'Sucesso',
+                    'Produto cadastrado com sucesso!',
+                    [
+                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                    ]
+                );
+            } else {
+                Alert.alert(
+                    'Erro',
+                    'Erro ao salvar produto!',
+                    [
+                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                    ]
+                );
+            }
+        } catch (error) {
+            console.error("Ocorreu um erro:", error);
+            Alert.alert(
+                'Erro',
+                'Ocorreu um erro inesperado!',
+                [
+                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                ]
+            );
+        }
+    };
+
+
+
     return (
         <ProductContext.Provider
             value={{
@@ -120,6 +184,11 @@ export const ProductProvider = ({ children }) => {
                 previews,
                 handleFileChange,
                 removeFile,
+                provider,
+                selectedProviders,
+                setSelectedProviders,
+                handleProvider,
+                handleSubmit,
             }}
         >
             {children}

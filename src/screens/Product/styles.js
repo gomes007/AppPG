@@ -56,6 +56,55 @@ const styles = StyleSheet.create({
         color: 'red',
         marginLeft: 10,
     },
+
+
+
+    container2: {
+        flex: 1,
+        padding: 16,
+        backgroundColor: '#F0F0F0',
+    },
+    searchContainer: {
+        marginBottom: 20,
+
+    },
+    searchbar: {
+        backgroundColor: '#FFF',
+    },
+    listContainer: {
+        backgroundColor: '#FFF',
+        borderRadius: 8,
+        padding: 10,
+        maxHeight: 200,
+    },
+    listItem: {
+        padding: 10,
+        borderBottomWidth: 1,
+        borderColor: '#EEE',
+    },
+    listItemText: {
+        fontSize: 16,
+    },
+    selectedContainer: {
+        padding: 16,
+        backgroundColor: '#F7F7F7',
+    },
+    selectedItem: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingVertical: 8,
+    },
+    removeButton: {
+        color: 'red',
+    },
+    buttonContainer: {
+        alignItems: 'center',
+        marginBottom: 60,
+        width: '100%',
+    },
+
+
 });
 
 module.exports = styles

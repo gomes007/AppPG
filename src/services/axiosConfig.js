@@ -1,5 +1,6 @@
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 const API_URL = 'http://10.0.2.2:8080/';
 
@@ -17,6 +18,7 @@ axiosInstance.interceptors.request.use(
                 const parsedUser = JSON.parse(user);
                 const { token } = parsedUser;
                 if (token) {
+                    console.log('Adding token:', token);
                     config.headers["Authorization"] = "Bearer " + token;
                 }
             }
