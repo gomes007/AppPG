@@ -122,14 +122,23 @@ export const ProductProvider = ({ children }) => {
 
         console.log('handleSubmit called');
 
-        const data = {
+        const preparedProduct = {
             ...product,
             commission: parseFloat(product.commission),
-            details: { ...details },
-            price: { ...price },
-            inventory: { ...inventory },
-            providers: selectedProviders.map(provider => ({ id: provider.id }))
+            weight: parseFloat(product.weight),
+            height: parseFloat(product.height),
+            length: parseFloat(product.length),
         };
+
+        const data = {
+            ...preparedProduct,
+            details,
+            price,
+            inventory,
+            providers: selectedProviders.map(provider => ({id: provider.id}))
+        };
+
+
 
         console.log('Data prepared:', data);
 
@@ -156,7 +165,7 @@ export const ProductProvider = ({ children }) => {
                 );
             }
         } catch (error) {
-            console.error("Ocorreu um erro:", error);
+            console.error("Detailed error:", error, error.message, JSON.stringify(error));
             Alert.alert(
                 'Erro',
                 'Ocorreu um erro inesperado!',

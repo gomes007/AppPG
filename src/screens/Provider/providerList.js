@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import {Alert, ScrollView, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Alert, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
 import providerService from "../../services/providerService";

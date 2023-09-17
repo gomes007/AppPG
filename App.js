@@ -17,6 +17,7 @@ import Product from "./src/screens/Product";
 import ProvidersList from "./src/screens/Provider/providerList";
 import SearchProvider from "./src/screens/Provider/SearchProvider";
 import ProductsProviders from "./src/screens/Products/ProductsProviders";
+import ProductsList from "./src/screens/Product/ProductsList";
 
 
 const Drawer = createDrawerNavigator();
@@ -73,9 +74,9 @@ const DrawerContent = (props) => {
                 <View style={styles.drawerItemContainer}>
                     <DrawerItem
                         icon={() => <Icon name="line-chart" size={24} color="black"/>}
-                        label="ProductsProviders"
+                        label="ProductsList"
                         labelStyle={styles.drawerItemLabel}
-                        onPress={() => navigateToScreen('ProductsProviders')}
+                        onPress={() => navigateToScreen('ProductsList')}
                     />
                 </View>
             </DrawerContentScrollView>
@@ -154,7 +155,7 @@ const AuthenticatedNavigation = () => {
             <Drawer.Screen name="Permission" component={Permission}/>
             <Drawer.Screen name="Product" component={Product}/>
             <Drawer.Screen name="ProductsProviders" component={ProductsProviders}/>
-            <Drawer.Screen name="ProvidersList" component={ProvidersList}/>
+            <Drawer.Screen name="ProductsList" component={ProductsList}/>
             <Drawer.Screen name="SearchProvider" component={SearchProvider}/>
             <Drawer.Screen name="Home" component={Home}/>
         </Drawer.Navigator>
